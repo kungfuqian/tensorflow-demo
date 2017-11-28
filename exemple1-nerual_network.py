@@ -1,3 +1,5 @@
+### first test for nural network and git 
+
 import tensorflow as tf
 import numpy as np
 
@@ -24,6 +26,7 @@ init = tf.global_variables_initializer()
 
 sess = tf.Session()
 sess.run(init)
+
 
 for step in range(201):
 	sess.run(train)
