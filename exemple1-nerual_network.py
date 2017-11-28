@@ -1,5 +1,6 @@
 ### first test for nural network and git 
-#new
+#new style
+
 import tensorflow as tf
 import numpy as np
 
