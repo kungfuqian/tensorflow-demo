@@ -7,6 +7,7 @@ matrix2 = tf.constant([[2],
 product = tf.matmul(matrix1,matrix2)  # matrix multiply == np.dot(m1,m2)
 
 # ctrl + / : batch annotation code
+
 # # method 1
 # sess = tf.Session()
 # result = sess.run(product)
