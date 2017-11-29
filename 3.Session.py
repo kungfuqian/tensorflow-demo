@@ -1,3 +1,8 @@
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
+# 忽略SSE4.1, SSE4.2, AVX, AVX2, FMA的警告
+
 import tensorflow as tf
 
 matrix1 = tf.constant([[3,3]])
