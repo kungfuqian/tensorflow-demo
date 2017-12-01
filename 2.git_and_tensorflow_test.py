@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 
 # 1.准备数据
-x_data = np.float32(np.random.rand(2,100))  # 生成 2行 100列的矩阵
+x_data = np.float32(np.random.rand(2,100))  # 生成 2行 100列的矩阵   2代表两个属性，100为样本个数
 y_data = np.matmul([0.1,0.6],x_data)+ 0.5
 
 
