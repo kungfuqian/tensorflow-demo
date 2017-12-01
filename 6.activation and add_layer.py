@@ -13,13 +13,19 @@ def add_layer(inputs, in_size, out_size, activation_function=None):
     return [outputs, Weights, biases]
 
 # prepare data
-x_data = np.linspace(-1,1,300)[:, np.newaxis]
+x_data = np.linspace(4, 400,300)[:, np.newaxis]
+# data regulation
+mean = np.mean(x_data)
+max = np.max(x_data)
+min = np.min(x_data)
+
+x_data_new = (x_data - mean)/(max - min)
 
 #在指定的间隔内返回均匀间隔的数字。numpy.linspace(start, stop, num=300)
 #  np.newaxis的功能是插入新维度
 
 noise = np.random.normal(0, 0.05, x_data.shape)  # add noise
-y_data = np.square(x_data) - 0.5 + noise
+y_data = np.square(x_data_new) - 0.5 + noise
 
 
 xs = tf.placeholder(tf.float32,[None,1]) # 随便输入多少个样本，属性为1
@@ -40,7 +46,7 @@ sess= tf.Session()
 sess.run(init)
 
 for step in range(1000):
-    sess.run(train_step, feed_dict={xs:x_data,ys:y_data})      #引用sess.run()时，若采用 placeholder,则需要feed_dict=...
+    sess.run(train_step, feed_dict={xs:x_data_new,ys:y_data})      #引用sess.run()时，若采用 placeholder,则需要feed_dict=...
     if step % 50 == 0:
-        print(sess.run(loss, feed_dict={xs:x_data,ys:y_data}))       #引用sess.run()时，若采用 placeholder,则需要feed_dict=...
-        print(sess.run([Weights, biases]))
+        print(sess.run(loss, feed_dict={xs:x_data_new,ys:y_data}))       #引用sess.run()时，若采用 placeholder,则需要feed_dict=...
+        #print(sess.run([Weights, biases]))
