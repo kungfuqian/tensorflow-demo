@@ -1,3 +1,50 @@
+
+#################################################################################
+#     sklearn.datasets 包提供了一些小的toy数据集。
+# 为了评估数据特征(n_samples,n_features)的影响,
+# 可以控制数据的一些统计学特性，产生人工数据。
+#     sklearn对于不同的数据类型提供三种数据接口。
+# dataset 产生函数和svmlight 加载器共享一个接口
+# toy dataset和来自mldata.org上的数据都有比较复杂的结构
+# sklearn包含一些不许要下载的toy数据集，见下表：
+# 导入toy数据的方法 	                    介绍 	                任务 	数据规模
+# load_boston() 	          加载和返回一个boston房屋价格的数据集 	回归 	506*13
+# load_iris([return_X_y])   加载和返回一个鸢尾花数据集 	        分类 	150*4
+# load_diabetes() 	      加载和返回一个糖尿病数据集 	        回归 	442*10
+# load_digits([n_class])    加载和返回一个手写字数据集 	        分类 	1797*64
+# load_linnerud() 	      加载和返回健身数据集                	多分类 	20
+# 使用方法：
+# from sklearn.datasets import load_linnerud
+# linnerud = load_linnerud()
+# linnerud.data
+# linnerud.target
+# linnerud.feature_names
+# linnerud.target_names
+
+# 数据集划分：sklearn.model_selection.train_test_split(*arrays, **options)
+# *arrays：可以是列表、numpy数组、scipy稀疏矩阵或pandas的数据框
+# test_size：可以为浮点、整数或None，默认为None
+# ①若为浮点时，表示测试集占总样本的百分比
+# ②若为整数时，表示测试样本样本数
+# ③若为None时，test size自动设置成0.25
+# train_size：可以为浮点、整数或None，默认为None
+# ①若为浮点时，表示训练集占总样本的百分比
+# ②若为整数时，表示训练样本的样本数
+# ③若为None时，train_size自动被设置成0.75
+
+# 数据预处理主要在sklearn.preprcessing包下
+# 标签二值化LabelBinarizer
+# 对于标称型数据来说，preprocessing.LabelBinarizer是一个很好用的工具。
+# 比如可以把yes和no转化为0和1，或是把incident和normal转化为0和1。
+#Example:
+# Binary targets transform to a column vector
+# >>> lb = preprocessing.LabelBinarizer()
+# >>> lb.fit_transform(['yes', 'no', 'no', 'yes'])
+# array([[1],
+#        [0],
+#        [0],
+#        [1]])
+#################################################################################
 import tensorflow as tf
 from sklearn.datasets import load_digits
 from sklearn.model_selection import train_test_split
